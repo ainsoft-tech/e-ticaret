@@ -1,0 +1,73 @@
+Elektronik bir marka için bir e-ticaret sitesi yapmam gerekiyor. Tüm web sitesini oluşturmak için kullanıma hazır kod verebilir misiniz?
+Bana elektronik ürünler satan modern ve mobil uyumlu bir e-ticaret web sitesi için PHP + sqlite3 + Bootstrap 5 tabanlı, kullanıma hazır bir e-ticaret site kodlarını sağlayabilir misin?
+
+📁 **Tam Dizin Yapısı ve Açıklamalı Dosyalar**
+
+```
+/elektronik-e-ticaret-sitesi
+├── /admin
+│   ├── dashboard.php                  // Yönetici kontrol paneli (istatistikli)
+│   ├── login.php                      // Admin girişi
+│   ├── products.php                   // Ürün listeleme ve yönetimi
+│   ├── add_product.php               // Ürün ekleme formu
+│   ├── edit_product.php              // Ürün düzenleme formu
+│   ├── delete_product.php            // Ürün silme işlemi
+│   ├── orders.php                    // Sipariş geçmişi görünümü
+│   └── includes/
+│       └── admin_auth.php            // Admin kimlik kontrolü
+│
+├── /assets
+│   ├── /css
+│   │   └── style.css                 // Genel stiller
+│   ├── /js
+│   │   └── script.js                // JS işlemleri
+│   └── /uploads
+│       └── ürün-resimleri.png       // Yüklenen ürün görselleri
+│
+├── /includes
+│   ├── db.php                        // Veritabanı bağlantısı (PDO)
+│   ├── functions.php                 // Yardımcı fonksiyonlar (ürün ekle, filtrele, mail gönder vs.)
+│   └── auth.php                      // Kullanıcı oturum kontrolü
+│
+├── index.php                         // Anasayfa (ürün listesi + arama + filtreleme)
+├── product.php                       // Tekil ürün detay sayfası
+├── register.php                      // Kullanıcı kayıt
+├── login.php                         // Kullanıcı girişi
+├── logout.php                        // Oturum kapatma
+├── cart.php                          // Sepet
+├── checkout.php                      // Ödeme adımı (siparişi tamamlama)
+├── profile.php                       // Kullanıcı profili ve sipariş geçmişi
+├── thankyou.php                      // Sipariş sonrası teşekkür sayfası
+└── mailer.php                        // Sipariş sonrası e-posta bildirimi (PHPMailer)
+```
+
+### ✅ Eklenen Özellikler:
+
+#### 🖼️ **Ürün Görseli Yükleme**
+- `add_product.php` ve `edit_product.php` dosyalarına `<input type="file" name="image">` eklendi.
+- Yüklenen görseller `assets/uploads/` klasörüne kaydedilir.
+- `products` tablosuna `image` alanı eklendi (VARCHAR 255).
+
+#### 📨 **Sipariş Sonrası E-Posta Bildirimi**
+- `mailer.php` içinde PHPMailer ile e-posta gönderimi eklendi.
+- `checkout.php` içinde sipariş başarılıysa kullanıcıya onay maili gönderilir.
+
+#### 🔍 **Arama & Filtreleme Sistemi** (`index.php`)
+- Arama kutusu (`$_GET['search']`) ile ürün adı, açıklaması aranabilir.
+- Filtreleme: Kategori ve fiyat aralığına göre ürünleri filtreleme
+
+#### 📊 **Admin Paneli - Özet İstatistikler** (`dashboard.php`)
+- Toplam ürün sayısı
+- Toplam sipariş sayısı
+- Toplam gelir
+- Son 5 sipariş listesi
+
+---
+
+🧱 Projen neredeyse hazır!
+
+🔧 İsteğe bağlı modüller:
+- Kredi kartı ile ödeme simülasyonu
+- Üye olamayan kullanıcı için sepet özelliği
+- Kargo takip sistemi
+- Çoklu yönetici yetkilendirme (admin/user roller)
